@@ -1,1 +1,19 @@
-k
+import java.util.Scanner; // Import the Scanner class
+
+public class prova3 {
+    public static void main(String[] args) {
+        float conto = 0;
+        float operazione = 0;
+        Scanner inserire = new Scanner(System.in);
+        do {
+            conto = conto + operazione;
+            System.out.println("Hai sul conto " + conto); 
+            System.out.println("Digita l'importo dell'operazione oppure 0 per uscire");
+            operazione = inserire.nextFloat(); 
+        } 
+        while (operazione != 0);
+        System.out.println("Hai sul conto " + conto + " Ciao!");
+               
+    }
+}
+
