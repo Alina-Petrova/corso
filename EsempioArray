@@ -1,0 +1,62 @@
+import java.util.Scanner; // Import the Scanner class
+public class EsempioArray {
+    public static void main(String[] args) {
+        int n = 0;
+        String[] listaAllievi;
+        String nomeVotoMax = "";
+        int[] voti;
+        int votoMax = 0;
+        float[] tasse;
+        float sommaTasse = 0;
+        float sommaVoti = 0;
+        float numPromossi = 0;
+        Scanner lettoreNome = new Scanner(System.in);
+        Scanner lettoreN = new Scanner(System.in);
+        Scanner lettoreT = new Scanner(System.in);
+
+        System.out.println("Quanti sono gli allievi?"); 
+        n = lettoreN.nextInt();
+        listaAllievi = new String[n];
+        voti = new int[n];
+        tasse = new float[n];
+        for(int i=0; i<n; i++) {
+            System.out.println("----------------------------------------");
+            System.out.println("Nome del allievo " + (i+1));
+            listaAllievi[i] = lettoreNome.nextLine();
+            System.out.println("Allievo " + listaAllievi[i] + " deve versare la tassa. Quanto ci da?");
+            tasse[i] = lettoreT.nextFloat();
+        }
+
+        for(int i=0; i<listaAllievi.length; i++) {
+            System.out.println("----------------------------------------");
+            System.out.println("Allievo " + listaAllievi[i] + " ha pagato " + tasse[i]);
+            System.out.println("Che voto diamo a " + listaAllievi[i] + "? (da 1 a 10)");
+            voti[i] = lettoreN.nextInt();
+        }
+        for(int i=0; i<listaAllievi.length; i++) {
+            System.out.println("----------------------------------------");
+            System.out.println(listaAllievi[i] + " si è beccato " + voti[i]);
+        }   
+        for(int i=0; i<tasse.length; i++) {  
+            if(voti[i]>votoMax) {
+                votoMax = voti[i];
+                nomeVotoMax = listaAllievi[i];
+            }
+            sommaTasse = sommaTasse + tasse[i];
+            sommaVoti = sommaVoti + voti[i];
+            if(voti[i]>5) {
+                numPromossi = numPromossi + 1;
+            }
+        }  
+
+        System.out.println("----------------------------------------");
+        System.out.println("Le nostre entrate sono " + sommaTasse);  
+        System.out.println("La media dei voti è di " + sommaVoti/(voti.length));
+        System.out.println("Abbiamo " + numPromossi + " di promossi per il totale di " + listaAllievi.length);  
+        System.out.println("L'allievo più bravo è " + nomeVotoMax + " con il voto " + votoMax); 
+
+        lettoreN.close();
+        lettoreNome.close();
+        lettoreT.close();
+    }    
+}
